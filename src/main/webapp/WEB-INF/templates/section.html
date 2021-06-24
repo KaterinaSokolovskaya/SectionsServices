@@ -13,9 +13,9 @@
 <div align="center">
 <form th:action="@{/section}" th:method="post" th:object="${searchCollection}">
     <div>
-        <label for="searchCollection" class="h5"><u>Введите названия секций через запятую:</u></label>
+        <label for="searchCollection" class="h5"><u>Введите названия секций:</u></label>
         <br>
-        <input type="text" name="searchCollection" id="searchCollection" size="100">
+        <textarea name="searchCollection" id="searchCollection" class="form-control z-depth-1 col-md-3 col-md-offset-3" rows="4"></textarea>
     </div>
     <br>
     <div>

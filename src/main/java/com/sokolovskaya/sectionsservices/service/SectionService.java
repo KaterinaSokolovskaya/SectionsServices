@@ -31,7 +31,7 @@ public class SectionService {
                 .collect(Collectors.toList());
 
         searchCollection.setSearchCollectionEl(Arrays.stream(searchCollection.getSearchCollection()
-                .split(","))
+                .split("\\n"))
                 .map(String::trim)
                 .collect(Collectors.toList()));
 
