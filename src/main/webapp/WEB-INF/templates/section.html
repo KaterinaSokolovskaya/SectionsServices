@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Секции-Сервисы</title>
+</head>
+<body>
+<br>
+<br>
+<br>
+<div align="center">
+<form th:action="@{/section}" th:method="post" th:object="${searchCollection}">
+    <div>
+        <label for="searchCollection" class="h5"><u>Введите названия секций через запятую:</u></label>
+        <br>
+        <input type="text" name="searchCollection" id="searchCollection" size="100">
+    </div>
+    <br>
+    <div>
+        <input type="submit" th:value="Найти" class="btn btn-outline-primary">
+    </div>
+</form>
+</div>
+<br>
+<br>
+<div align="center">
+
+    <table class="table table-sm table-light table-bordered" style="width: 500px;">
+        <tr>
+            <th>Найдены сервисы и категории по следующим секциям:</th>
+        </tr>
+        <tr th:each="section: ${checkedSections}">
+        <td th:text="${section}"></td>
+        </tr>
+    </table>
+
+    <table class="table table-sm table-light table-bordered" style="width: 500px;">
+        <tr>
+            <th>Сервисы (тарифные планы)</th>
+            <th>Категории</th>
+        </tr>
+        <tr th:each="service: ${services}">
+            <td th:text="${service.name}"></td>
+            <td th:text="${service.categories}"></td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>
