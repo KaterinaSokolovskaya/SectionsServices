@@ -14,7 +14,9 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
@@ -41,7 +43,7 @@ public class SectionService {
                 .collect(Collectors.toList());
     }
 
-    public List<com.sokolovskaya.sectionsservices.model.Service> findSectionService(SearchCollection searchCollection) throws IOException {
+    public Set<com.sokolovskaya.sectionsservices.model.Service> findSectionService(SearchCollection searchCollection) throws IOException {
 
         SectionsCollection sectionsCollection = convertToSectionsCollection(new File("src/files/", "Sections.json"));
         ServicesCollection servicesCollection = convertToServicesCollection(new File("src/files/", "Services.json"));
@@ -53,11 +55,11 @@ public class SectionService {
                 .collect(Collectors.toList())
                 .forEach(section -> searchServiceNames.addAll(section.getServices())));
 
-        List<com.sokolovskaya.sectionsservices.model.Service> result = new ArrayList<>();
+        Set<com.sokolovskaya.sectionsservices.model.Service> result = new HashSet<>();
 
         searchServiceNames.forEach(name -> result.addAll(servicesCollection.getServices()
                 .stream().filter(service -> service.getName().equals(name))
-                .collect(Collectors.toList())));
+                .collect(Collectors.toSet())));
 
         return result;
     }
