@@ -38,12 +38,12 @@
 
     <table class="table table-sm table-light table-bordered" style="width: 500px;">
         <tr>
-            <th>Сервисы (тарифные планы)</th>
             <th>Категории</th>
+            <th>Сервисы (тарифные планы)</th>
         </tr>
-        <tr th:each="service: ${services}">
-            <td th:text="${service.name}"></td>
-            <td th:text="${service.categories}"></td>
+        <tr th:each="category: ${categories}">
+            <td th:text="${category.name}"></td>
+            <td th:text="${category.services}"></td>
         </tr>
     </table>
 </div>

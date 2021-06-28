@@ -30,7 +30,7 @@ public class SectionController {
 
     public String getServicesForSections(Model model, SearchCollection searchCollection) throws IOException {
 
-        model.addAttribute("services", sectionService.findSectionService(searchCollection));
+        model.addAttribute("categories", sectionService.findSectionService(searchCollection));
         model.addAttribute("checkedSections", sectionService.checkedSectionNames(searchCollection));
 
         return "section";
